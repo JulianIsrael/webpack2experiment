@@ -4,7 +4,7 @@ interface Counters {
     count1?: number
     count2?: number
 }
-console.log(observable);
+
 export default class Blade1Store {
     @observable counters: Counters;
 

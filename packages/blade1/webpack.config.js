@@ -1,18 +1,32 @@
+const webpack = require('webpack');
 const path = require('path');
 const fs = require('fs');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const entries = {
-    blade1: './src/tsx/index.tsx',
+    www: './_www/index.tsx',
 }
 
 module.exports = {
-    entry: entries,
+    entry: [
+        'react-hot-loader/patch',
+        'webpack-dev-server/client?http://localhost:8080',
+        'webpack/hot/only-dev-server',
+        './_www/index.tsx'
+    ],
     output: {
-        filename: '[name].js',
+        filename: 'www.js',
         path: path.resolve(__dirname, 'dist'),
-        libraryTarget: 'commonjs2', // "var" | "assign" | "this" | "window" | "global" | "commonjs" | "commonjs2" | "commonjs-module" | "amd" | "umd" | "umd2" | "jsonp"
+        publicPath: '/',
+        // libraryTarget: 'commonjs2', // "var" | "assign" | "this" | "window" | "global" | "commonjs" | "commonjs2" | "commonjs-module" | "amd" | "umd" | "umd2" | "jsonp"
     },
+    context: path.resolve(__dirname, 'src'),
     devtool: 'inline-source-map',
+    devServer: {
+        hot: true,
+        contentBase: path.resolve(__dirname, 'dist'),
+        publicPath: '/',
+    },
     module: {
         rules: [
             {
@@ -50,4 +64,14 @@ module.exports = {
     resolve: {
         extensions: [".tsx", ".ts", ".js"]
     },
+    plugins: [
+        new HtmlWebpackPlugin({
+            template: '_www/index.html'
+        }),
+        new HtmlWebpackPlugin({
+            template: '_www/index.html'
+        }),
+        new webpack.HotModuleReplacementPlugin(),
+        new webpack.NamedModulesPlugin(),
+    ]
 };

@@ -18,7 +18,7 @@ export default class Blade1Comp extends React.Component<OwnProps, any> {
         const {counters: {count1, count2}} = this.store;
         return (
             <div>
-                <h1> Blade1 </h1>
+                <h1> Blade1 hellow</h1>
                 count1: {count1}
                 count2: {count2}
                 <button onClick={() => this.store.countUp()}> CountUp </button>

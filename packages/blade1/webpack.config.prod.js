@@ -1,9 +1,8 @@
 const path = require('path');
 const fs = require('fs');
-const { CheckerPlugin } = require('awesome-typescript-loader')
 
 const entries = {
-    www: './src/tsx/_www/index.tsx',
+    blade1: './src/tsx/index.tsx',
 }
 
 module.exports = {
@@ -11,7 +10,8 @@ module.exports = {
     output: {
         filename: '[name].js',
         path: path.resolve(__dirname, 'dist'),
-        //libraryTarget: 'commonjs2', // "var" | "assign" | "this" | "window" | "global" | "commonjs" | "commonjs2" | "commonjs-module" | "amd" | "umd" | "umd2" | "jsonp"
+        libraryTarget: 'commonjs2', 
+// "var" | "assign" | "this" | "window" | "global" | "commonjs" | "commonjs2" | "commonjs-module" | "amd" | "umd" | "umd2" | "jsonp"
     },
     devtool: 'inline-source-map',
     module: {
@@ -30,29 +30,25 @@ module.exports = {
                 test: /\.ts(x?)$/,
                 exclude: /node_modules/,
                 use: [
-                    // {
-                    //     loader: 'babel-loader'
-                    // },
                     {
-                        loader: 'awesome-typescript-loader'
+                        loader: 'babel-loader'
+                    },
+                    {
+                        loader: 'ts-loader'
                     }
                 ]
             },
-            // {
-            //     test: /\.js$/,
-            //     exclude: /node_modules/,
-            //     use: [
-            //         {
-            //             loader: 'babel-loader'
-            //         }
-            //     ]
-            // }
-        ]
+            {
+                test: /\.js$/,
+                exclude: /node_modules/,
+                use: [
+                    {
+                        loader: 'babel-loader'
+                    }
+                ]
+            }]
     },
     resolve: {
         extensions: [".tsx", ".ts", ".js"]
     },
-    plugins: [
-        new CheckerPlugin()
-    ]
 };
