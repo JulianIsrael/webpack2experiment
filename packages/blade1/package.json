@@ -2,7 +2,8 @@
   "name": "blade1",
   "version": "1.0.0",
   "description": "blade 1",
-  "main": "index.js",
+  "main": "dist/blade1.js",
+  "typings": "dist/blade1.d.ts",
   "scripts": {
     "start": "webpack-dev-server --config webpack.config.js --colors --inline --open",
     "build": "webpack --config webpack.config.prod.js"
