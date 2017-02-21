@@ -4,14 +4,14 @@ const fs = require('fs');
 const entries = {
     blade1: './src/tsx/index.tsx',
 }
+const externals = ['react', 'react-dom', 'mobx', 'mobx-react'];
 
 module.exports = {
     entry: entries,
     output: {
         filename: '[name].js',
         path: path.resolve(__dirname, 'dist'),
-        libraryTarget: 'commonjs2', 
-// "var" | "assign" | "this" | "window" | "global" | "commonjs" | "commonjs2" | "commonjs-module" | "amd" | "umd" | "umd2" | "jsonp"
+        libraryTarget: 'commonjs2',
     },
     devtool: 'inline-source-map',
     module: {
@@ -51,4 +51,5 @@ module.exports = {
     resolve: {
         extensions: [".tsx", ".ts", ".js"]
     },
+    externals
 };

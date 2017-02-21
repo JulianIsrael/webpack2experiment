@@ -21,7 +21,6 @@
     "html-webpack-plugin": "^2.28.0",
     "react-hot-loader": "^3.0.0-beta.6",
     "source-map-loader": "^0.1.6",
-    "ts-loader": "^2.0.0",
     "typescript": "^2.2.0",
     "webpack": "^2.2.1",
     "webpack-dev-server": "^2.4.1"

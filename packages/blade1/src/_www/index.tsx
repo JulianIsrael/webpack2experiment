@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { render } from 'react-dom';
 
-import Blade1 from '../tsx';
+import Blade from '../tsx';
 
-render(<Blade1 />, document.getElementById('root'));
+render(<Blade />, document.getElementById('root'));
